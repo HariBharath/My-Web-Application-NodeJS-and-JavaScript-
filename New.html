@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Doctors registration page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            var doc = {};
+        function doctor(){
+            alert('hi');
+         
+            alert('hisdsd');
+            var dayx = [];
+                if (document.getElementById('mon').checked === true)
+                {
+                    dayx.push("MON");
+                }
+                if (document.getElementById('tue').checked === true)
+                {
+                    dayx.push("TUE");
+                }
+                if (document.getElementById('wed').checked === true)
+                {
+                    dayx.push("WED");
+                }
+                if (document.getElementById('thur').checked === true)
+                {
+                    dayx.push("THUR");
+                }
+                if (document.getElementById('fri').checked === true)
+                {
+                    dayx.push("FRI");
+
+                }
+                console.log(dayx)
+                alert('hisassasassadsd');
+            var obj = { 
+                "Name" : document.getElementById('name').value,
+                "Department": document.getElementById('dep').value, 
+                "Days" : dayx
+                
+            }
+        
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST", "http://localhost:1200/display", true);
+            // xhr.setRequestHeader('Content-Type', 'application/json');
+            // xhr.send(obj);
+            $.ajax({
+                url: 'http://localhost:1200/display',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(obj), 
+                    success: function(){
+                    alert('hello');
+                    },
+                    error: function(){
+                        alert('error');
+                    }
+    });
+}
+            
+        
+        
+    </script>
+    <style>
+        
+    </style>
+
+    </head>
+
+    <body>
+        <form name="f1">
+            <p>Name</p>
+            <input id="name" type = 'text' name = 'doc.Name'/>
+            <br>
+            <p>Department</p>
+            <input id = "dep" type = 'text' name = 'doc.Department'/>
+            <br>
+            <p>Available Days</p>
+            <input id = "mon" type = 'checkbox' name = 'Days' value ="MON"> Monday </input>
+            <input id = "tue" type = 'checkbox' name = 'Days' value ="TUE"> Tuesday </input>
+            <input id = "wed" type = 'checkbox' name = 'Days' value ="WED"> Wednesday </input>
+            <input id = "thur" type = 'checkbox' name = 'Days' value ="THUR"> Thursday </input>
+            <input id = "fri" type = 'checkbox' name = 'Days' value ="FRI"> Friday </input>
+            <br>
+            <br>
+            <button type="button" onclick="doctor()"> Submit </button>
+
+
+        </form>
+    </body>
+    
+</html>
